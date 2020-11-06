@@ -240,8 +240,7 @@ table tr td:last-child {
     color: #24305E;
 }
 
-@media only screen and (max-width: 400px) {
-    .menu-container
+@media (max-width: 400px) {
     .menu {
         margin: 0;
         width: 100%;
@@ -264,7 +263,6 @@ table tr td:last-child {
         width: 120px;
     }
 
-    
     .winner {
        text-align: center;
        word-wrap: break-word;
