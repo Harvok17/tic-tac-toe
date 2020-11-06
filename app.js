@@ -1,3 +1,5 @@
+const menuContainer = document.querySelector(".menu-container");
+
 const Player = (name) => {
   return { name };
 };
@@ -55,12 +57,20 @@ const displayController = (function () {
     displayWinner: function (winner) {
       const endContainer = document.querySelector(".end-container");
       const winMessage = document.querySelector(".winner");
-      const playAgain = document.querySelector(".play-again");
+      const playAgainBtn = document.querySelector(".play-again");
 
       endContainer.style.transform = "translateY(0)";
       winMessage.innerText = `${winner}`;
-      playAgain.addEventListener("click", function () {
-        location.reload(true);
+
+      playAgainBtn.addEventListener("click", function () {
+        gameBoard.mainBoard = Array.from(Array(9).keys());
+        endContainer.style.transform = "translateY(100%)";
+        menuContainer.classList.remove("hide");
+        delete menuModule.playerOne;
+        delete menuModule.playerTwo;
+        delete menuModule.computer;
+        delete menuModule.opponent;
+        delete menuModule.symbol;
       });
     },
   };
@@ -84,6 +94,8 @@ const game = (function (gmBoard, dispCtrl) {
       let current = huPlayer.move;
       let isGameOver = false;
       for (let i = 0; i < tiles.length; i++) {
+        tiles[i].classList.remove("x");
+        tiles[i].classList.remove("o");
         tiles[i].addEventListener("click", turnClick);
       }
       function turnClick(e) {
@@ -214,7 +226,6 @@ const game = (function (gmBoard, dispCtrl) {
 })(gameBoard, displayController);
 
 const controller = (function (menu) {
-  const menuContainer = document.querySelector(".menu-container");
   const playerTwoInput = document.getElementById("player-2");
   const vsComp = document.getElementById("vs-comp");
   const vsHum = document.getElementById("vs-human");
@@ -228,7 +239,7 @@ const controller = (function (menu) {
   }
 
   vsComp.addEventListener("click", function () {
-    vsComp.dataset.content = "WARNING: Unbeatable"
+    vsComp.dataset.content = "WARNING: Unbeatable";
     vsHum.style.backgroundColor = "transparent";
     switchActive(vsHum, vsComp);
     menu.setOpponent("computer");
@@ -236,7 +247,7 @@ const controller = (function (menu) {
   });
 
   vsHum.addEventListener("click", function () {
-    vsComp.dataset.content = ""
+    vsComp.dataset.content = "";
     vsComp.style.backgroundColor = "transparent";
     switchActive(vsComp, vsHum);
     menu.setOpponent("human");
@@ -286,7 +297,6 @@ const controller = (function (menu) {
         player.move = "o";
         opponent.move = "x";
       }
-
       game.PlayGame(player, opponent, versus);
     } else if (versus == "human") {
       menu.createHuman();
@@ -306,5 +316,14 @@ const controller = (function (menu) {
 
     menu.clearInput();
     menuContainer.classList.add("hide");
+    vsComp.style.backgroundColor = "transparent";
+    vsComp.classList.remove("active");
+    vsHum.style.backgroundColor = "transparent";
+    vsHum.classList.remove("active");
+    xBtn.style.backgroundColor = "transparent";
+    xBtn.classList.remove("active");
+    oBtn.style.backgroundColor = "transparent";
+    oBtn.classList.remove("active");
+    vsComp.dataset.content = "";
   });
 })(menuModule);
