@@ -162,8 +162,8 @@ const game = (function (gmBoard, dispCtrl) {
         }
       }
 
-      function emptySquares(board) {
-        return board.filter((s) => typeof s == "number");
+      function emptySquares() {
+        return gmBoard.mainBoard.filter((s) => typeof s == "number");
       }
 
       function bestSpot() {
@@ -171,7 +171,7 @@ const game = (function (gmBoard, dispCtrl) {
       }
 
       function minimax(newBoard, player) {
-        let availSpots = emptySquares(newBoard);
+        let availSpots = emptySquares();
 
         if (checkWin(newBoard, huPlayer.move)) {
           return { score: -10 };
