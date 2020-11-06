@@ -60,7 +60,7 @@ const displayController = (function () {
       endContainer.style.transform = "translateY(0)";
       winMessage.innerText = `${winner}`;
       playAgain.addEventListener("click", function () {
-        location.reload();
+        location.reload(true);
       });
     },
   };
