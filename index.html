@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.1/css/all.css" integrity="sha384-vp86vTRFVJgpjF9jiIGPEEqYqlDwgyBgEF109VFjmqGmIY/Y4HV4d3Gp2irVfcrp" crossorigin="anonymous">
+    <link
+    rel="icon"
+    type="image/png"
+    sizes="32x32"
+    href="images/tic-tac-toe-pngrepo-com.png"
+  />
+    <link rel="stylesheet" href="style.css" />
+    <script src="app.js" defer></script>
+    <title>Tic Tac Toe</title>
+  </head>
+  <body>
+
+    <div class="menu-container">
+      <div class="menu">
+        <h1>Tic Tac Toe</h1>
+        <h2>Game Modes:</h2>
+        <div class="mode-choices">
+          <div class="mode" id="vs-comp">DEEP BLUE (A.I.)</div>
+          <div class="mode" id="vs-human">VS HOOMAN</div>
+        </div>
+        <div class="usernames">
+          <input class="user" type="text" id="player-1" placeholder="Player 1 (Optional)" maxlength="15">
+          <input class="user" type="text" id="player-2" placeholder="Player 2 (Optional)" maxlength="15">
+        </div>
+        <h2>Choose Move:</h2>
+        <div class="move-choices">
+          <div class="move" id="x-btn"><i class="fas fa-times"></i></div>
+          <div class="move" id="o-btn"><i class="far fa-circle"></i></div>
+        </div>
+        <button type="button" class="start">START</button>
+      </div>
+    </div>
+    
+    
+  
+
+      <table class="board">
+        <tr>
+          <td class="tile" id="0"></td>
+          <td class="tile" id="1"></td>
+          <td class="tile" id="2"></td>
+        </tr>
+        <tr>
+          <td class="tile" id="3"></td>
+          <td class="tile" id="4"></td>
+          <td class="tile" id="5"></td>
+        </tr>
+        <tr>
+          <td class="tile" id="6"></td>
+          <td class="tile" id="7"></td>
+          <td class="tile" id="8"></td>
+        </tr>
+      </table>
+    
+    <div class="end-container">
+      <p class="winner"></p>
+      <button class="play-again">PLAY AGAIN</button>
+    </div>
+
+  </body>
+</html>
